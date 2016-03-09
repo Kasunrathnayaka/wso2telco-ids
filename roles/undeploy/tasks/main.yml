@@ -1,0 +1,27 @@
+---
+# tasks file for undeployi
+
+#- name: Stop Java Runnning application
+#  shell : killall -9 java
+
+- name: Undeploy IDS app
+  shell: rm -rf /mnt/wso2*
+
+- mysql_db: name=ids_apimgt state=absent
+- mysql_db: name=ids_connectdb state=absent
+- mysql_db: name=ids_operatorsdb state=absent
+- mysql_db: name=ids_regdb state=absent
+- mysql_db: name=ids_userdb state=absent
+
+- name: service mysql  
+  action: service name=mysql state=restarted
+#- name : copy db delete script
+ # copy: src=drop.table.sh dest=/tmp owner=ubuntu group=ubuntu mode=0777
+
+#- name: Remove Databases userdb
+ # shell:  /tmp/drop.table.sh root root apimgt
+#
+
+#- name: Uninstall mysql
+#  apt: name=mysql-server state=absent
+

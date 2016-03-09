@@ -1,0 +1,33 @@
+---
+- name: Update apt-repo
+  apt: update_cache=yes
+
+- name: Instatll python-software-properties
+  apt: name=python-software-properties state=present
+ 
+- name: Adding apt repo for oracle 
+  apt_repository: repo='ppa:webupd8team/java'
+
+- name: Update apt-repo with oracle-java7-installer
+  apt: update_cache=yes
+
+- name: Adding debconf oracle license
+  shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+
+- name: Adding debconf oracle license part 2
+  shell: echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
+
+- name: Install Oracle 7 
+  apt: name=oracle-java7-installer state=present
+
+- name: correct java version selected
+  alternatives: name=java path=/usr/lib/jvm/java-7-oracle/jre/bin/java
+
+- name: setup java env varibale
+  shell: echo "JAVA_HOME=/usr/lib/jvm/java-7-oracle/jre
+               PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+               export JAVA_HOME
+               export JRE_HOME
+               export PATH" >> /etc/profile
+
+

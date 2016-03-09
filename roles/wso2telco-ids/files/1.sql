@@ -1,0 +1,36 @@
+-- MySQL dump 10.13  Distrib 5.6.28, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: axiatadb
+-- ------------------------------------------------------
+-- Server version	5.6.28-0ubuntu0.15.10.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `endpointapps`
+
+DROP DATABASE IF EXISTS `axiatadb`;
+DROP DATABASE IF EXISTS `ids_apimgt`;
+DROP DATABASE IF EXISTS `ids_connectdb`;
+DROP DATABASE IF EXISTS `ids_operatorsdb`;
+DROP DATABASE IF EXISTS `ids_regdb`;
+DROP DATABASE IF EXISTS `ids_userdb`;
+DROP DATABASE IF EXISTS `statdb`;
+
+
+CREATE DATABASE `axiatadb`;
+CREATE DATABASE `ids_apimgt`;
+CREATE DATABASE `ids_connectdb`;
+CREATE DATABASE `ids_operatorsdb`;
+CREATE DATABASE `ids_regdb`;
+CREATE DATABASE `ids_userdb`;
+CREATE DATABASE `statdb`;

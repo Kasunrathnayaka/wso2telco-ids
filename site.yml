@@ -1,0 +1,13 @@
+---
+- hosts: all
+  remote_user: ubuntu
+  sudo: yes
+  roles:
+    #- java
+<<<<<<< HEAD
+    - undeploy
+#    - {role: mysql, mysql_root_db_pass: root, mysql_db: none, mysql_bind_address: "0.0.0.0", mysql_users: none }
+=======
+    #- {role: mysql, mysql_root_db_pass: root, mysql_db: none, mysql_bind_address: "0.0.0.0", mysql_users: none }
+>>>>>>> ecc71170569e12a0795aec9826ebbd54b7d2106f
+    - wso2telco-ids
