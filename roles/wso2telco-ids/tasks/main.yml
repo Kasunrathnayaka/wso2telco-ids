@@ -3,12 +3,11 @@
 - name: Install zip 
   apt: name=zip state=present
 
-<<<<<<< HEAD
 #- name: Download wso2telco-ids
 #  get_url: url=http://maven.wso2telco.com/nexus/service/local/repositories/snapshots/content/com/wso2telco/product/ids/wso2telcoids/2.0.0-SNAPSHOT/wso2telcoids-2.0.0-20160219.170948-5.zip dest=/mnt/ mode=0440
 
 - name: copy wso2telco-ids package to webserver
-  synchronize: src=/var/lib/jenkins/workspace/product-ids-2.0.0/modules/distribution/target/wso2telcoids-{{ version }}-SNAPSHOT.zip dest=/tmp
+  synchronize: src=/var/lib/jenkins/workspace/product-ids/modules/distribution/target/wso2telcoids-{{ version }}-SNAPSHOT.zip dest=/tmp
 
 - name: Unzip wso2telco-ids 
   unarchive: src=/tmp/wso2telcoids-{{ version }}-SNAPSHOT.zip dest=/mnt/ copy=no
@@ -19,23 +18,23 @@
 - name: Copy master-datasources.xml
   synchronize: src=master-datasources.xml dest=/mnt/wso2telcoids-{{ version }}-SNAPSHOT/repository/conf/datasources/ 
 
-- name: Copy 1.sql
-  synchronize: src=1.sql  dest=/tmp
+#- name: Copy 1.sql
+#  synchronize: src=1.sql  dest=/tmp
 
-- name: Copy axiatadb.sql
-  synchronize: src=axiatadb.sql  dest=/tmp
+#- name: Copy axiatadb.sql
+#  synchronize: src=axiatadb.sql  dest=/tmp
 
-- name: Setup DB Script 
-  shell: cat ids_* > db.sql chdir=/mnt/wso2telcoids-{{ version }}-SNAPSHOT/dbscripts/ids
+#- name: Setup DB Script 
+#  shell: cat ids_* > db.sql chdir=/mnt/wso2telcoids-{{ version }}-SNAPSHOT/dbscripts/ids
 
-- name: Run db script
-  shell: mysql -u root -proot < db.sql chdir=/mnt/wso2telcoids-{{ version }}-SNAPSHOT/dbscripts/ids
+#- name: Run db script
+#  shell: mysql -u root -proot < db.sql chdir=/mnt/wso2telcoids-{{ version }}-SNAPSHOT/dbscripts/ids
 
 - name: Run db script 1.sql
-  shell: mysql -u root -proot < 1.sql chdir=/tmp
+  shell: mysql -u root -proot < all.sql chdir=/tmp
 
-- name: Run db script axiatadb.sql
-  shell: mysql -u root -proot < axiatadb.sql chdir=/tmp
+#- name: Run db script axiatadb.sql
+#  shell: mysql -u root -proot < axiatadb.sql chdir=/tmp
 
 - name : Kill java process and start wso2-ids
   shell : killall -9  java && ./wso2server.sh &  chdir=/mnt/wso2telcoids-{{ version }}-SNAPSHOT/bin
@@ -70,25 +69,3 @@
 
 - name: tomcat Restart
   service: name=tomcat7 state=restarted
-=======
-- name: Download wso2telco-ids
-  get_url: url=http://maven.wso2telco.com/nexus/service/local/repositories/snapshots/content/com/wso2telco/product/ids/wso2telcoids/2.0.0-SNAPSHOT/wso2telcoids-2.0.0-20160219.170948-5.zip dest=/mnt/ mode=0440
-
-#- name: copy wso2telco-ids package to webserver
-#  synchronize: src=wso2telcoids-2.0.0-SNAPSHOT.zip dest=/tmp checksum=yes times=no
-
-- name: Unzip wso2telco-ids 
-  unarchive: src=/mnt/wso2telcoids-2.0.0-20160219.170948-5.zip dest=/mnt/ copy=no
-
-- name: copy mysql-jdbc driver webserver
-  synchronize: src=mysql-connector-java-5.1.21-bin.jar dest=/mnt/wso2telcoids-2.0.0-SNAPSHOT/repository/components/lib/ checksum=yes times=no
-
-- name: Copy master-datasources.xml
-  synchronize: src=master-datasources.xml dest=/mnt/wso2telcoids-2.0.0-SNAPSHOT/repository/conf/datasources/ checksum=yes times=no
-
-- name: copy DB script
-  synchronize: src=ids_db.sql dest=/tmp checksum=yes times=no
-
-- name: Run db script
-  shell: mysql -u root -proot < /tmp/ids_db.sql
->>>>>>> ecc71170569e12a0795aec9826ebbd54b7d2106f

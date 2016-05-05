@@ -126,11 +126,7 @@
           <validationInterval>30000</validationInterval>
         </configuration>
       </definition>
-<<<<<<< HEAD
     </datasource>
-=======
-    </datasource->
->>>>>>> ecc71170569e12a0795aec9826ebbd54b7d2106f
     <!-- For an explanation of the properties, see: http://people.apache.org/~fhanik/jdbc-pool/jdbc-pool.html -->
     <!--datasource>
       <name>SAMPLE_DATA_SOURCE</name>
